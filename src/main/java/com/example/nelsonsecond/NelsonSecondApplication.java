@@ -15,7 +15,7 @@ public class NelsonSecondApplication {
 
 	@GetMapping
 	Customer getCustomer() {
-		return new Customer(1L, "James Bond 007 England");
+		return new Customer(1L, "James Bond 007");
 	}
 
 	class Customer {
