@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 public class CustomerService {
 
     public Customer getCustomer() {
-        return new Customer(1L, "James Bond 007");
+        return new Customer(1L, "James Bond 00s7");
     }
 }
