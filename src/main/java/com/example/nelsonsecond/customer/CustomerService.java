@@ -1,10 +1,21 @@
 package com.example.nelsonsecond.customer;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CustomerService {
-    public Customer getCustomer() {
-        return new Customer(1L, "James Bond 007");
+    private final CustomerRepo customerRepo;
+
+    @Autowired
+    public CustomerService(CustomerRepo customerRepo) {
+        this.customerRepo = customerRepo;
+    }
+
+    public List<Customer> getCustomer() {
+        return customerRepo.getCustomers();
     }
 }
