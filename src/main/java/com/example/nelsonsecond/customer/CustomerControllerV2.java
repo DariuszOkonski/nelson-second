@@ -3,12 +3,12 @@ package com.example.nelsonsecond.customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path = "api/v2/customer")
+@RequestMapping(path = "api/v2/customers")
 public class CustomerControllerV2 {
 
     private final CustomerService customerService;
@@ -18,12 +18,14 @@ public class CustomerControllerV2 {
         this.customerService = customerService;
     }
 
-    @GetMapping(value = "all")
-    List<Customer> getCustomer() {
+    @GetMapping
+    List<Customer> getCustomers() {
+        return customerService.getCustomers();
+    }
 
-        return Collections.singletonList(
-                new Customer(0L, "v2", "v2")
-        );
+    @GetMapping(path = "{customerId}")
+    Customer getCustomer(@PathVariable("customerId") Long id) {
+        return customerService.getCustomer(id);
     }
 
     @PostMapping
